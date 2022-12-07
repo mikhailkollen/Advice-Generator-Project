@@ -5,12 +5,12 @@ const adviceID = document.querySelector(".advice-id");
 
 btn.addEventListener("click", () => {
   adviceText.textContent = "Loading wisdom...";
-  setTimeout(fetchAdvice, 2000);
+  fetchAdvice();
 });
 
 const fetchAdvice = async () => {
   try {
-    const response = await fetch(url);
+    const response = await fetch(url, { cache: "no-store" });
     if (!response.ok) {
       throw new Error("there was an error");
     }
